@@ -37,7 +37,7 @@ def get_location_table(player):
             rule=lambda state: has_sword(state, player)),
         "Weapon Woods - Babysitter Reward": LocData(
             103, region="Weapon Woods",
-            rule=lambda state: state.has("Lost Baby Carrot", player)),
+            rule=lambda state: state.has("Lost Carrot Baby", player)),
 
         # Layer Lane
         "Layer Lane - Trophy Corner": LocData(201, region="Layer Lane 1"),
