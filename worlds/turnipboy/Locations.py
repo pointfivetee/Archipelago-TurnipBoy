@@ -12,7 +12,7 @@ def get_location_table(player):
             rule=lambda state: state.has("Deliver Fertilizer", player) and has_fork(state, player), event_name="Deliver Fork"),
         "Veggieville - Deliver Goop": LocData(
             None, region="Veggieville",
-            rule=lambda state: state.has_all(["Deliver Fertilizer", "Green Goop"], player), event_name="Deliver Goop"),
+            rule=lambda state: state.has_all(["Deliver Fork", "Green Goop"], player), event_name="Deliver Goop"),
         "Veggieville - Deliver Laser Pointer": LocData(
             None, region="Veggieville",
             rule=lambda state: state.has_all(["Deliver Goop", "Laser Pointer"], player), event_name="Deliver Laser Pointer"),
