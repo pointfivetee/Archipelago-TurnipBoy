@@ -13,6 +13,8 @@ def get_region_table(player):
                      rule=lambda state: has_sword(state, player)),
             ExitData("Rocky Ramp 1",
                      rule=lambda state: state.has("Deliver Fertilizer", player)),
+            ExitData("Grim Graveyard 1",
+                     rule=lambda state: state.has("Deliver Goop", player)),
             ExitData("Mysterious Mafia Base 1",
                      rule=lambda state: state.has("Deliver Laser Pointer", player)),
         ]),
@@ -134,11 +136,11 @@ def get_region_table(player):
         # Grim Graveyard
         "Grim Graveyard 1": RegionData(exits=[
             ExitData("Grim Graveyard 2",
-                     rule=lambda state: state.has("Deliver Goop", player))
+                     rule=lambda state: state.has_all(["Watering Can", "Boom Boots"], player))
         ]),
         "Grim Graveyard 2": RegionData(exits=[
             ExitData("Grim Graveyard 3",
-                     rule=lambda state: state.has_all(["Soil Sword", "Watering Can", "Boom Boots"], player))
+                     rule=lambda state: state.has_all(["Move Mittens", "Potted Petalportal"], player))
         ]),
         "Grim Graveyard 3": RegionData(),
 
@@ -170,7 +172,6 @@ def get_region_table(player):
 
         # Mysterious Mafia Base
         "Mysterious Mafia Base 1": RegionData(exits=[
-            # Can you manage this without the hazmat suit if you're willing to take damage?
             ExitData("Mysterious Mafia Base 2",
                      rule=lambda state: state.has_all(["Watering Can", "Potted Petalportal"], player))
         ]),
