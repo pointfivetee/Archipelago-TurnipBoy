@@ -1,6 +1,6 @@
 from BaseClasses import Item, MultiWorld, Region, Location, Tutorial, ItemClassification, CollectionState
 from worlds.AutoWorld import World, WebWorld
-from .Items import item_table, event_table
+from .Items import item_table
 from .Locations import get_location_table
 from .Regions import get_region_table
 from .Types import RegionData
@@ -37,7 +37,8 @@ class TurnipBoyWorld(World):
             lambda state: state.has("Defeat Corrupt Onion", self.player)
 
     def create_item(self, name: str) -> Item:
-        return Item(name, ItemClassification.progression, 123, self.player)
+        item_data = item_table[name]
+        return Item(name, item_data.classification, item_data.index, self.player)
 
     def create_items(self):
         item_pool = []

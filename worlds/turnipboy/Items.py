@@ -53,6 +53,7 @@ item_table = {
     "Cat Ears": ItemData(212, ItemClassification.filler),
 }
 
+# Not currently used anywhere, but still useful as a reference
 event_table = {
     "Key": ItemData(None, ItemClassification.progression),
     "Defeat King Pig": ItemData(None, ItemClassification.progression),
