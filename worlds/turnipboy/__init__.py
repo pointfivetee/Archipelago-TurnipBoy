@@ -1,5 +1,6 @@
 from BaseClasses import Item, MultiWorld, Region, Location, Tutorial, ItemClassification, CollectionState
 from worlds.AutoWorld import World, WebWorld
+from worlds.turnipboy.Options import TurnipBoyOptions
 from .Items import item_table
 from .Locations import get_location_table
 from .Regions import get_region_table
@@ -31,6 +32,8 @@ class TurnipBoyWorld(World):
     topology_present = False
     hidden = False
     web = TurnipBoyWebWorld()
+    options_dataclass = TurnipBoyOptions
+    options: TurnipBoyOptions
 
     def set_rules(self):
         self.multiworld.completion_condition[self.player] =\
@@ -65,6 +68,13 @@ class TurnipBoyWorld(World):
         # Connect Menu to Veggieville, then add all other connections
         menu_region.connect(self.multiworld.get_region("Veggieville", self.player))
         connect_regions(self.multiworld, self.player)
+
+    def generate_early(self):
+        quick_start = self.options.quick_start
+        if (quick_start > 0):
+            quick_start_items = self.multiworld.random.sample(["Progressive Weapon", "Watering Can", "Fertilizer"], quick_start)
+            for item in quick_start_items:
+                self.multiworld.local_early_items[self.player][item] = 1
 
     def post_fill(self):
         return
