@@ -108,7 +108,7 @@ def get_location_table(player):
             rule=lambda state: state.has("Tot's Letter", player)),
         "Idle Icebox - Pops' Reward": LocData(
             604, region="Idle Icebox 1",
-            rule=lambda state: state.can_reach_location("Grim Graveyard - Tots' Reward", player)),
+            rule=lambda state: state.has("Tot's Letter", player) and state.can_reach_location("Grim Graveyard - Tots' Reward", player)),
 
         # Rocky Ramp
         "Rocky Ramp - Bottom of Cliff": LocData(701, region="Rocky Ramp 2"),
